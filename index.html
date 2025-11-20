@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crecimiento Bacteriano - Cálculo IV</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- PyScript para ejecutar Python en el navegador -->
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Crecimiento Bacteriano</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#inicio" class="nav-link">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#modelo" class="nav-link">Modelo Matemático</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#calculadora" class="nav-link">Calculadora</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#grafica" class="nav-link">Gráfica</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrusel -->
+    <section id="inicio" class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-slide active">
+                <div class="carousel-content">
+                    <h1>Crecimiento Bacteriano</h1>
+                    <p>Modelo matemático basado en ecuaciones diferenciales</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <h1>Modelo Exponencial</h1>
+                    <p>P(t) = P₀ e^(kt)</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <h1>Análisis de Poblaciones</h1>
+                    <p>Estudio del crecimiento de microorganismos</p>
+                </div>
+            </div>
+            <button class="carousel-btn carousel-btn-prev">&#10094;</button>
+            <button class="carousel-btn carousel-btn-next">&#10095;</button>
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del Modelo Matemático -->
+    <section id="modelo" class="model-section">
+        <div class="container">
+            <h2 class="section-title">Modelo Matemático del Crecimiento Bacteriano</h2>
+            
+            <div class="model-content">
+                <div class="model-text">
+                    <h3>Fenómeno del Crecimiento Bacteriano</h3>
+                    <p>El crecimiento bacteriano es un proceso biológico fundamental donde las bacterias se dividen y multiplican bajo condiciones favorables. Este crecimiento generalmente sigue un patrón predecible que puede modelarse matemáticamente.</p>
+                    
+                    <h3>Formulación del Modelo</h3>
+                    <p>El modelo más simple para describir el crecimiento bacteriano es el modelo exponencial, que supone que la tasa de crecimiento es proporcional al tamaño de la población en cualquier momento.</p>
+                    
+                    <div class="equation">
+                        <p>Ecuación diferencial:</p>
+                        <div class="math-equation">
+                           dP/dt = k.P
+                        </div>
+                        <p>Donde:</p>
+                        <ul>
+                            <li>P es el tamaño de la población bacteriana</li>
+                            <li>t es el tiempo</li>
+                            <li>k es la constante de crecimiento</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Solución General</h3>
+                    <p>Resolviendo la ecuación diferencial, obtenemos la solución:</p>
+                    <div class="equation">
+                        <div class="math-equation">
+                            P(t) = P₀ e^(kt)
+                        </div>
+                        <p>Donde P₀ es la población inicial en t=0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de la Calculadora -->
+    <section id="calculadora" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Calculadora de Crecimiento Bacteriano</h2>
+            
+            <div class="calculator-content">
+                <div class="calculator-form">
+                    <form id="growth-form">
+                        <div class="form-group">
+                            <label for="p0">Población inicial (P₀):</label>
+                            <input type="number" id="p0" name="p0" min="1" value="100" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="k">Constante de crecimiento (k):</label>
+                            <input type="number" id="k" name="k" step="0.01" value="0.1" required>
+                            <small>Valores típicos: 0.1 - 0.5 (por unidad de tiempo)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="t">Tiempo (t):</label>
+                            <input type="number" id="t" name="t" min="0" step="0.1" value="5" required>
+                            <small>Unidades de tiempo (horas, días, etc.)</small>
+                        </div>
+                        
+                        <button type="submit" class="btn-calculate">Calcular Población</button>
+                    </form>
+                    
+                    <div class="result" id="result">
+                        <h3>Resultado:</h3>
+                        <p id="population-result">Ingrese los valores y haga clic en calcular</p>
+                    </div>
+                </div>
+                
+                <div class="calculator-info">
+                    <h3>Interpretación de Resultados</h3>
+                    <p>La calculadora utiliza el modelo exponencial P(t) = P_0 e^(kt) para predecir el tamaño de la población bacteriana después de un tiempo determinado.</p>
+                    
+                    <div class="info-box">
+                        <h4>Constante de Crecimiento (k)</h4>
+                        <p>La constante k determina la rapidez del crecimiento:</p>
+                        <ul>
+                            <li>k > 0: Crecimiento exponencial</li>
+                            <li>k = 0: Población constante</li>
+                            <li>k < 0: Decrecimiento (muerte bacteriana)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de la Gráfica -->
+    <section id="grafica" class="graph-section">
+        <div class="container">
+            <h2 class="section-title">Gráfica de Crecimiento Bacteriano</h2>
+            
+            <div class="graph-content">
+                <div class="graph-controls">
+                    <h3>Parámetros de la Gráfica</h3>
+                    <form id="graph-form">
+                        <div class="form-group">
+                            <label for="graph-p0">Población inicial (P₀):</label>
+                            <input type="number" id="graph-p0" name="graph-p0" min="1" value="100" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="graph-k">Constante de crecimiento (k):</label>
+                            <input type="number" id="graph-k" name="graph-k" step="0.01" value="0.1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="graph-t-max">Tiempo máximo:</label>
+                            <input type="number" id="graph-t-max" name="graph-t-max" min="1" value="20" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-update">Actualizar Gráfica</button>
+                    </form>
+                </div>
+                
+                <div class="graph-container">
+                    <canvas id="growth-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="container">
+            <p>Proyecto de Cálculo IV - Crecimiento Bacteriano</p>
+            <p>Modelo exponencial basado en ecuaciones diferenciales</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- Código Python para cálculos -->
+    <py-script src="calculos.py"></py-script>
+</body>
+</html>
